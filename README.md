@@ -22,6 +22,6 @@ If you're going to build stuff manually note that in order to work with mplayer 
 
 Usage
 -----
-./main.py
-get hot
+./main.py  
+get hot  
 play 2vf1v
