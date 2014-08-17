@@ -1,7 +1,8 @@
 coubterm
 ========
 
-Play your favourite coubs in terminal
+NO BROWSER, NO FLASH, NOTHING!  
+Play coubs right in your terminal
 
 
 Dependencies
