@@ -7,7 +7,9 @@ Play your favourite coubs in terminal
 Dependencies
 ------------
 
-mplayer built with libcaca option is required  
+* python 2.7
+* mplayer built with libcaca option
+
 brew install mplayer --with-libcaca
 
 
