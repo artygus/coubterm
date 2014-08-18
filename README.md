@@ -26,3 +26,4 @@ Usage
 ./main.py  
 get hot  
 play 2vf1v
+next
