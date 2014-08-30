@@ -28,7 +28,7 @@ __last_played = None
 
 
 def __mplay(url):
-    os.system('mplayer -vo caca -quiet -cache 8192 -msglevel all=1 -loop 0 -fixed-vo %s' % url)
+    os.system('mplayer -vo caca -quiet -cache 8192 -prefer-ipv4 -msglevel all=1 -loop 0 -fixed-vo %s' % url)
 
 
 def __play(permalink):
