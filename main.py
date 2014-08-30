@@ -114,7 +114,7 @@ if __name__ == '__main__':
         
     print """
 Howdy!
-Start with \"get newest\" command and \"play\" some something, e.g. \"play 2vf1v\". To quit player screen press \"q\".
+Start with \"get newest\" command and \"play\" some coubs, e.g. \"play 2vf1v\". To quit player screen press \"q\".
 Btw, autocomplete activated.
 """
 
@@ -131,5 +131,5 @@ Btw, autocomplete activated.
             play(x.split()[-1])
         elif x == 'q' or x == 'quit':
             exit()
-        else:
-            print 'command is not recognized, try again'
+        elif x != '':
+            print 'command not recognized, try again. use tab key to list suggestions'

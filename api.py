@@ -4,8 +4,8 @@ import urllib2
 import json
 
 class CoubApi:
-    HOT_URL = 'http://coub.com/api/v1/timeline/hot.json?page=1&per_page=5'
-    NEWEST_URL = 'http://coub.com/api/v1/timeline/explore/newest.json?page=1&per_page=5'
+    HOT_URL = 'http://coub.com/api/v1/timeline/hot.json?page=1&per_page=15'
+    NEWEST_URL = 'http://coub.com/api/v1/timeline/explore/newest.json?page=1&per_page=15'
     COUB_URL = 'http://coub.com/coubs/%s.json'
     
     def __prepare_data(self, coub):
@@ -17,8 +17,8 @@ class CoubApi:
             'permalink': coub['permalink'],
             'likes': coub['likes_count'],
             'views': coub['views_count'],
-            'channel_permalink': self.__ellipsis(channel['permalink'], 15),
-            'title': self.__ellipsis(coub['title'], 15),
+            'channel_permalink': self.__ellipsis(channel['permalink'], 16),
+            'title': self.__ellipsis(coub['title'], 16),
             'video_url':  video_url
         }
 
