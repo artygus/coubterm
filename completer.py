@@ -1,18 +1,9 @@
 import readline
 
 class Completer:
-    def __init__(self):
+    def __init__(self, complete_dict):
         self.permalinks = []
-        self.words = {
-            "play": self.permalinks,
-            "get": {
-                "coub": self.permalinks,
-                "hot": None,
-                "newest": None
-            },
-            "next": None,
-            "quit": None
-        }
+        self.words = complete_dict
         self.line = None
 
 
@@ -22,14 +13,10 @@ class Completer:
         if line != self.line:
             self.matching_words = self.__get_nested(self.words, line)
             self.line = line
-            
         try:
             return self.matching_words[index]
         except IndexError:
             return None
-
-    def push_coub(self, permalink):
-        self.permalinks.append(permalink)
 
 
     def __get_nested(self, obj, attr, default = []):

@@ -6,14 +6,24 @@ import sys
 from collections import OrderedDict
 
 import api
-import completer
+from completer import Completer
 
 VERSION = 0, 0, 1
 
 API = api.CoubApi()
 COUBS = OrderedDict()
 
-__completer = completer.Completer()
+__permalinks = []
+__autocomplete_dict = {
+    "play": __permalinks,
+    "get": {
+        "coub": __permalinks,
+        "hot": None,
+        "newest": None
+    },
+    "next": None,
+    "quit": None
+}
 __last_played = None
 
 
@@ -30,7 +40,7 @@ def __play(permalink):
 
 def __push_coub(coub):
     COUBS[coub['permalink']] = coub
-    __completer.push_coub(coub['permalink'])
+    __permalinks.append(coub['permalink'])
 
 
 def __print_coubs_data(coubs):
@@ -93,7 +103,7 @@ def play_next():
 
 
 if __name__ == '__main__':
-    readline.set_completer(__completer.complete)
+    readline.set_completer(Completer(__autocomplete_dict).complete)
     if sys.platform == 'darwin':
         readline.parse_and_bind('bind ^I rl_complete')
     else:
