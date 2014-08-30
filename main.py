@@ -45,7 +45,7 @@ def __push_coub(coub):
 
 def __print_coubs_data(coubs):
     headers = ["Permalink", "Title", "Channel", "Views", "Likes"]
-    row_format ="{:>16}" * (len(headers) + 1)
+    row_format = u"{:>16}" * (len(headers) + 1)
     print row_format.format("", *headers)
     
     for row in coubs:

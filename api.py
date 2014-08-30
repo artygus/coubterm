@@ -18,7 +18,7 @@ class CoubApi:
             'likes': coub['likes_count'],
             'views': coub['views_count'],
             'channel_permalink': self.__ellipsis(channel['permalink'], 15),
-            'title': self.__ellipsis(coub['title'].encode('utf-8'), 15),
+            'title': self.__ellipsis(coub['title'], 15),
             'video_url':  video_url
         }
 
@@ -47,7 +47,7 @@ class CoubApi:
             resp = urllib2.urlopen(self.NEWEST_URL)
             r_data = json.load(resp)
             # from StringIO import StringIO
-            # with open(os.getcwd() + '/newest.json', 'r') as f: resp = f.read()
+            # with open(os.getenv('HOME') + '/Downloads/newest.json', 'r') as f: resp = f.read()
             # r_data = json.load(StringIO(resp))
             p_data = []
         
