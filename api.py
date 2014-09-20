@@ -6,7 +6,7 @@ import json
 class CoubApi:
     HOT_URL = 'http://coub.com/api/v1/timeline/hot.json?page=1&per_page=15'
     NEWEST_URL = 'http://coub.com/api/v1/timeline/explore/newest.json?page=1&per_page=15'
-    COUB_URL = 'http://coub.com/coubs/%s.json'
+    COUB_URL = 'http://coub.com/api/v2/coubs/%s.json'
     
     def __prepare_data(self, coub):
         tpl = coub['file_versions']['web']['template']
@@ -69,4 +69,3 @@ class CoubApi:
         except:
             print sys.exc_info()
             return False
-        
