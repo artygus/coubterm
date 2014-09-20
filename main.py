@@ -1,6 +1,7 @@
 #!/usr/bin/env python 
 
 import os
+import subprocess
 import readline
 import sys
 from collections import OrderedDict
@@ -27,15 +28,19 @@ __autocomplete_dict = {
 __last_played = None
 
 
-def __mplay(url):
-    os.system('mplayer -vo caca -quiet -cache 8192 -prefer-ipv4 -msglevel all=1 -loop 0 -fixed-vo %s' % url)
-
+def __mplay(video_url, audio_url):
+    if len(audio_url) > 0:
+      audio_proc = subprocess.Popen(['mplayer', '-cache','8192', '-prefer-ipv4', '-msglevel','all=1', '-loop','0', audio_url], stdin=subprocess.PIPE)
+      os.system('mplayer -vo caca -quiet -cache 8192 -prefer-ipv4 -msglevel all=1 -loop 0 -fixed-vo %s' % video_url)
+      audio_proc.communicate('q')
+    else:
+      os.system('mplayer -vo caca -cache 8192 -prefer-ipv4 -msglevel all=1 -loop 0 -fixed-vo %s' % video_url)
 
 def __play(permalink):
     global __last_played
     print 'playing %s' % COUBS[permalink]['video_url']
     __last_played = permalink
-    __mplay(COUBS[permalink]['video_url'])
+    __mplay(COUBS[permalink]['video_url'], COUBS[permalink]['audio_url'])
 
 
 def __push_coub(coub):

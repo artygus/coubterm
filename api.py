@@ -9,8 +9,12 @@ class CoubApi:
     COUB_URL = 'http://coub.com/api/v2/coubs/%s.json'
     
     def __prepare_data(self, coub):
-        tpl = coub['file_versions']['web']['template']
-        video_url = tpl.replace('%{version}', 'med').replace('%{type}', 'mp4')
+        video_tpl = coub['file_versions']['web']['template']
+        video_url = video_tpl.replace('%{version}', 'med').replace('%{type}', 'mp4')
+
+        audio_tpl = coub['audio_versions']['template'] if 'audio_versions' in coub and 'template' in coub['audio_versions'] else ''
+        audio_url = audio_tpl.replace('%{version}', 'mid')
+
         channel = coub['user'] if 'user' in coub else coub['channel']
         
         return {
@@ -19,7 +23,8 @@ class CoubApi:
             'views': coub['views_count'],
             'channel_permalink': self.__ellipsis(channel['permalink'], 16),
             'title': self.__ellipsis(coub['title'], 16),
-            'video_url':  video_url
+            'video_url': video_url,
+            'audio_url': audio_url
         }
 
 
